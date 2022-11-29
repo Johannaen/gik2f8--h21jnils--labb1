@@ -20,9 +20,23 @@ searchField.addEventListener('keyup', (e) =>
 
 function renderBookList(bookList) {
   const existingElement = document.querySelector('.book-list');
-
   const root = document.getElementById('root');
-
   existingElement && root.removeChild(existingElement);
   bookList.length > 0 && searchField.value && root.insertAdjacentHTML('beforeend', BookList(bookList));
+
+  const test = document.querySelectorAll('.book-list__item');
+
+  test.forEach(hittaElement);
+}
+
+
+
+function hittaElement (element) {
+
+  element.addEventListener("mouseover", (event) => {
+    console.log(event);
+    console.log(event.target.id);
+  });
+
+  
 }
