@@ -25,18 +25,31 @@ function renderBookList(bookList) {
   bookList.length > 0 && searchField.value && root.insertAdjacentHTML('beforeend', BookList(bookList));
 
   const test = document.querySelectorAll('.book-list__item');
-
-  test.forEach(hittaElement);
 }
 
+function showDetails(event) {
+  const targetBook = bookList.filter(({title, author}) => {
+    return ( 
+      event.target.innerHTML.includes(title) && event.target.innerHTML.includes(author) //returnera bara boken med titel och författare som boken vi är vid
+    )}
+  );
 
 
-function hittaElement (element) {
-
-  element.addEventListener("mouseover", (event) => {
-    console.log(event);
-    console.log(event.target.id);
-  });
-
+  const existingElement = document.getElementById("bookDetails");
+  if (existingElement ){
+    existingElement.remove()
+  }
   
+ 
+  if (targetBook.length > 0) {
+  getBook(targetBook[0].id).then(book => {
+    event.target.insertAdjacentHTML("beforeend", getBookCard(book))
+  });
+  }}
+
+function removeDetails(event) {
+  const existingElement = document.getElementById("bookDetails");
+  if (existingElement ){
+    existingElement.remove()
+  }
 }
