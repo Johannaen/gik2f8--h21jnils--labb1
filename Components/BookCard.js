@@ -12,7 +12,7 @@ function getBookCard(book) {
                     Utgivningsår: ${book.releaseDate}
                 </p>
             </div>
-        <img class="max-h-48"  src="${book.coverImage}" alt="${book.title}coverImage">
+        <img class="max-h-48"  src="${book.coverImage}" alt="Bild på omslag saknas">
     </div>`;
 
     return html;
